@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- 
+LEARNING NOTE ABOUT FAVICON ERRORS:
+
+The 404 error for favicon.ico happens because:
+1. Browsers automatically look for a file called "favicon.ico" in the root directory
+2. Even if you don't specify a favicon, browsers will still try to load it
+3. When the file doesn't exist, you get a 404 (Not Found) error
+
+Why fix favicon errors?
+- Clean browser console (no error messages)
+- Professional appearance with a tab icon
+- Better user experience and website recognition
+- Prevents unnecessary server requests for missing files
+-->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Crash Data Visualization Map</title>
+    
+    <!-- 
+    FAVICON EXPLANATION FOR STUDENTS:
+    A favicon is a small icon that appears in the browser tab next to your page title.
+    It helps users identify your website when they have multiple tabs open.
+    
+    Best practices for favicons:
+    1. Always include a favicon to avoid 404 errors in the browser console
+    2. Use multiple formats for better browser compatibility
+    3. Place the favicon.ico file in your root directory for automatic detection
+    4. Use descriptive alt text for accessibility
+    -->
+    
+    <!-- Standard favicon (automatically detected by browsers) -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Alternative PNG favicon for better quality (modern browsers prefer this) -->
+    <!-- You can create a PNG version later for better quality -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+    
+    <!-- For older Internet Explorer browsers -->
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!--Plugged in the appropriate links from the Jawg Lab Website for the Jawg.Streets map.-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- 
+    LEARNING NOTE ABOUT SCRIPT LOADING:
+    Notice that we're loading Leaflet.js twice in this file:
+    1. From CDN (above) - faster, always up-to-date
+    2. From local lib folder (at bottom) - works offline, more control
+    
+    Best practice: Choose ONE method to avoid conflicts and redundancy
+    CDN is recommended for most projects unless you need offline functionality
+    -->
+    
+    <!--[if IE<9]>
+            <link rel="stylesheet" href="css/style.ie.css">
+        <![endif]-->
+
+    <!--you can also place internal styles here;
+             place these within <style> tags-->
+
+</head>
+
+<body>
+    <!-- 
+    LEARNING NOTE ABOUT MAP CONTAINER:
+    The div with id='mapid' is where our Leaflet map will be rendered.
+    Important points:
+    1. MUST have a defined width and height (maps need dimensions)
+    2. The ID should be unique (used in JavaScript to target this element)
+    3. Inline styles work but external CSS is more maintainable
+    -->
+    <div id='mapid' style='width: 400px; height: 300px;'></div>
+    
+    <!-- Panel for additional map controls or information -->
+    <div id="panel"></div>
+    
+    <!-- 
+    SCRIPT LOADING ORDER IS IMPORTANT:
+    1. Load libraries first (Leaflet)
+    2. Load your custom scripts last (main.js)
+    This ensures all dependencies are available when your code runs
+    -->
+    <script src="lib/leaflet.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
